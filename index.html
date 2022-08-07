@@ -24,6 +24,7 @@
       </div> -->
     </div>
     <script>
+      var toFullScreen = document.getElementById("unity-container"); 
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -98,7 +99,11 @@
       }
 
       loadingBar.style.display = "block";
-      container.requestFullscreen();
+      if (toFullScreen.requestFullscreen) 
+      {
+        toFullScreen.requestFullscreen();
+      }
+      
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
