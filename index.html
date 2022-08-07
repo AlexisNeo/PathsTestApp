@@ -47,7 +47,7 @@
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">My project (2)</div>
       </div> -->
-      <button onclick="openFullscreen();" class ="center">Fullscreen Mode</button>
+      <button onclick="rotate();" class ="center">Fullscreen Mode</button>
     </div>
     <script>
       var toFullScreen = document.getElementById("unity-canvas"); 
@@ -72,7 +72,28 @@
         } else if (toFullScreen.msRequestFullscreen) { /* IE11 */
               toFullScreen.msRequestFullscreen();
         }
-}
+        }
+
+        function fullScreenCheck() {
+            if (document.fullscreenElement) return;
+            return openFullscreen();
+        }
+
+        function getOppositeOrientation() {
+            const { type } = screen.orientation;
+            return type.startsWith("portrait") ? "landscape" : "portrait";
+        }
+
+        async function rotate() {
+            try {
+            await fullScreenCheck();
+            } catch (err) {
+            console.error(err);
+            }
+            const newOrientation = getOppositeOrientation();
+            await screen.orientation.lock(newOrientation);
+        }
+
 
       function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
