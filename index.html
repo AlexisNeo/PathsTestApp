@@ -9,6 +9,7 @@
   </head>
   <body>
     <div id="unity-container" style="width:100%; height:100%; overflow:hidden;">
+      <button onclick="openFullscreen();">Open in Fullscreen Mode</button>
       <canvas id="unity-canvas" width="auto" height="auto"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -38,10 +39,15 @@
       // Modify or remove this function to customize the visually presented
       // way that non-critical warnings and error messages are presented to the
       // user.
-        if (toFullScreen.requestFullscreen) 
-      {
-        toFullScreen.requestFullscreen();
-      }
+      function openFullscreen() {
+        if (toFullScreen.requestFullscreen) {
+               toFullScreen.requestFullscreen();
+        } else if (toFullScreen.webkitRequestFullscreen) { /* Safari */
+            toFullScreen.webkitRequestFullscreen();
+        } else if (toFullScreen.msRequestFullscreen) { /* IE11 */
+              toFullScreen.msRequestFullscreen();
+        }
+}
 
       function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
