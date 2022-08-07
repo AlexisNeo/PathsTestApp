@@ -21,12 +21,16 @@
 }
 
         .center {
+        
          margin: 10px;
          position: absolute;
-         top: 10px;
-         left: 50%;
-         -ms-transform: translate(-50%, -50%);
-         transform: translate(-50%, -50%);
+         font-size:20px;
+         top: 65px;
+         right: 65px;
+         width: 150px;
+         height: 150px;
+
+         background: url('TemplateData/fullscreen-button.png') no-repeat center;
 }
 </style>
   </head>
@@ -42,13 +46,15 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-    <!--  <div id="unity-footer">
+
+         <!--  <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">My project (2)</div>
-      </div> -->
-      <button onclick="rotate();" class ="center">Fullscreen Mode</button>
+        </div> -->
+      
     </div>
+    
     <script>
       var toFullScreen = document.getElementById("unity-canvas"); 
       var container = document.querySelector("#unity-container");
@@ -175,5 +181,6 @@
       };
       document.body.appendChild(script);
     </script>
+    <div onclick="rotate();" class ="center"></div>
   </body>
 </html>
